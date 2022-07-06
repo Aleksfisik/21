@@ -14,6 +14,17 @@ $(document).ready(function () {
             $('.myForm #exampleModal').modal();
 
     });
+    $('.nBtn, .table .deBtn').on('click', function (event) {
+        event.preventDefault();
+        var href = $(this).attr('href');
+
+
+        $.get(href, function (user, status) {
+            $('.myForm1 #id1').val(user.id);
+        });
+        $('.myForm1 #exampleModal1').modal();
+
+    });
 
     $('.table .delBtn').on('click', function (event) {
         event.preventDefault();

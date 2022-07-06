@@ -35,7 +35,7 @@
                     <td th:text="${user.email}"></td>
                     <td>
                         <a class="btn btn-primary eBtn" th:href="@{admin/findOne/(id=${user.id})}">Edit</a>
-                        <a class="btn btn-danger delBtn" th:href="@{admin/user-delete/{id}(id=${user.id})}">Delete</a>
+                        <a class="btn btn-danger deBtn" th:href="@{admin/findOne/(id=${user.id})}">Delete</a>
                     </td>
 
 
@@ -139,34 +139,45 @@
             </div>
 
         </div>
-
+        </form>
     </div>
 
 </div>
-    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal"
-         role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Delete Record</h5>
-                    <button aria-label="Close" class="close" data-dismiss="modal"
-                            type="button">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="alert alert-danger">
-                        Are you sure you want to delete?
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-dismiss="modal"
-                            type="button">Close
-                    </button>
-                    <a class="btn btn-danger" href="" id="delRef">Delete</a>
+<div class="myForm1">
+    <form action="#" method="post" th:action="@{/admin/user}" th:object="${user}">
+        <input type="hidden" name="_method" value="delete" />
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel1" class="modal fade"
+             id="exampleModal1" role="dialog"
+             tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Delete</h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal"
+                                type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="alert alert-danger">
+                            Are you sure you want to delete?
+                        </p>
+                        <div class="form-grop">
+                            <label class="col-form-label" for="id">ID:</label>
+                            <input class="form-control" id="id1" name="id" readonlytype="number" value="" readonly>
+                        </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal"
+                                type="button">Close
+                        </button>
+                        <input class="btn btn-danger" type="submit" value="delete"/>
+                    </div>
                 </div>
             </div>
         </div>
+        </div>
+    </form>
+</div>
     </div>
 </div>
 </div>

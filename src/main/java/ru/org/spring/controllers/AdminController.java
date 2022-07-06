@@ -17,8 +17,6 @@ public class AdminController {
     }
 
 
-    long z = 0;
-
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("users", userService.findAll());
@@ -41,9 +39,10 @@ public class AdminController {
     }
 
 
-    @RequestMapping(value = "/user-delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable("id") long id) {
-        userService.deleteById(id);
+    @DeleteMapping(value = "/user")
+    public String delete(@ModelAttribute("user") User person) {
+
+        userService.deleteById(person.getId());
         return "redirect:/admin";
     }
 
@@ -51,7 +50,6 @@ public class AdminController {
     @ResponseBody
     public User findOne(long id) {
         User person = userService.getById(id);
-        z = person.getId();
         return person;
     }
 }
